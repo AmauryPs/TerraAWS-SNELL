@@ -81,7 +81,7 @@ You will need to have Terraform installed on your machine and some quick knowled
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli).
 2. Clone the repo
    ```sh
    git clone https://github.com/AmauryPs/TerraAWS-SNELL.git
