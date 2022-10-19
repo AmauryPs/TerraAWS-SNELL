@@ -43,6 +43,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#thanks">Thanks</a></li>
   </ol>
 </details>
 
@@ -53,7 +54,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-This is a personal project, as I am living in China I wanted to have my own VPN to bypass the GFW. This Terraform script creates an EC2 Linux instance and install [Snell](https://github.com/surge-networks/snell).
+This is a personal project, as I am living in China I wanted to have my own VPN to bypass the GFW. This Terraform script creates an EC2 Linux instance with the latest AMI, apply a security group and install [Snell](https://github.com/surge-networks/snell).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -85,29 +86,56 @@ You will need to have Terraform installed on your machine and some quick knowled
    ```sh
    git clone https://github.com/AmauryPs/TerraAWS-SNELL.git
    ```
-3. In `variables.tfvars` modify the keys and the region.
-   ```sh
-   npm install
+3. Create a `variables.tfvars` file (note that my .gitignore ignore this file, if you upload your aws keys to Github, AWS will find it and lock your IAM account with a policy that you need to remove with your root user) and modify the keys and the region for the AWS provider, you may follow the official [guide](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/), it's quite easy, note well the Access and Secret keys as AWS shows only them. You can find the code of the region you want your instance to be in the column 'Region' of this [table](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/), exemple `eu-west-3`
+   ```hc1
+   aws_access_key = "Your_access_key"
+   aws_secret_key = "Your_secrect_key"
+   aws_region     = ""
    ```
-4. In `snell-script.sh`modify the PSK, you will need this PSK to configure the VPN client on your machine or phone.
+4. In `snell-script.sh`modify the PSK, it should be 31 characters, you will need this PSK to configure the VPN client on your machine or phone. You can also modify the port number and the obfuscation type, by default port is `443` and obfs is `http`.
    ```sh
-   const API_KEY = 'ENTER YOUR API';
+   PSK="6NvFIU307789MlKPD6Ihxql0V"
    ```
 5. Simply execute the Terraform files.
       ```hc1
    terraform init
    terraform apply
    ```
-
+6. At the end of the script, Terraform will output the public IP address of your instance, note it to pass it into the configuration file of Clash.
+   ```hc1
+    Outputs:
+    T-publicIP = "13.39.51.62"
+   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 To connect to Snell VPN on your machine, please refer to the [Documentation of Clash](https://github.com/Dreamacro/clash)
 
+Here is a working `.yaml` coniguration file for Clash:
+   ```sh
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: Global
+log-level: info
+external-controller: 127.0.0.1:9090
+secret: ""
+proxies:
+  - name: "snellAws"
+    type: snell
+    server: PublicIPOfYourInstance
+    port: 443
+    psk: ThePSKYouChoose
+    version: 3
+    obfs-opts:
+     mode: http
+     host: bing.com
+Rule:
+  - MATCH,DIRECT
+
+   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -153,7 +181,7 @@ No License
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGMENTS -->
+<!-- Thanks -->
 ## Thanks
 
 * [Surge Network](https://github.com/surge-networks/snell)
