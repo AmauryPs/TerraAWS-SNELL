@@ -52,8 +52,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 This is a personal project, as I am living in China I wanted to have my own VPN to bypass the GFW. This Terraform script creates an EC2 Linux instance with the latest AMI, apply a security group and install [Snell](https://github.com/surge-networks/snell).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
