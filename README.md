@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a personal project, as I am living in China I wanted to have my own VPN to bypass the GFW. This Terraform script creates an EC2 Linux instance with the latest AMI, apply a security group and install [Snell](https://github.com/surge-networks/snell).
+This is a personal project, as I am living in China, I wanted to have my own VPN to bypass the GFW. This Terraform script creates an EC2 Linux instance with the latest AMI, apply a security group and install [Snell](https://github.com/surge-networks/snell).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,7 +73,7 @@ You will need to have Terraform installed on your machine and some quick knowled
 
 ### Prerequisites
 
-* []()Terraform version version 1.3.2 >.
+* []()Terraform version 1.3.2 >.
 * An AWS account with the region you want the EC2 instance to be installed.
 * The access key for your Amazon account.
 
@@ -84,7 +84,7 @@ You will need to have Terraform installed on your machine and some quick knowled
    ```sh
    git clone https://github.com/AmauryPs/TerraAWS-SNELL.git
    ```
-3. Create a `variables.tfvars` file (note that my .gitignore ignore this file, if you upload your aws keys to Github, AWS will find it and lock your IAM account with a policy that you need to remove with your root user) and modify the keys and the region for the AWS provider, you may follow the official [guide](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/), it's quite easy, note well the Access and Secret keys as AWS shows only them. You can find the code of the region you want your instance to be in the column 'Region' of this [table](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/), exemple `eu-west-3`
+3. Create a `variables.tfvars` file (note that my .gitignore ignore this file, if you upload your AWS keys to Github, AWS will find it and lock your IAM account with a policy that you need to remove with your root user) and modify the keys and the region for the AWS provider, you may follow the official [guide](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/), it's quite easy, note well the Access and Secret keys as AWS shows only them. You can find the code of the region you want your instance to be in the column 'Region' of this [table](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/), example `eu-west-3`
    ```hc1
    aws_access_key = "Your_access_key"
    aws_secret_key = "Your_secrect_key"
@@ -146,7 +146,7 @@ Rule:
     - [ ]  PSK
     - [ ]  PORTS
 - [ ] Automatically create a `conf.yaml` for Clash.
-- [ ] Save and sort every connections logs to anywebsite.
+- [ ] Save and sort every connection logs to any websites.
 
 See the [open issues](https://github.com/AmauryPs/TerraAWS-SNELL/issues) for a full list of proposed features (and known issues).
 
