@@ -9,7 +9,7 @@
     <img src="https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Terraform-AWS-Snell</h3>
 
   <p align="center">
     <br />
