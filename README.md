@@ -111,7 +111,7 @@ You will need to have Terraform installed on your machine and some quick knowled
 
 To connect to Snell VPN on your machine, please refer to the [Documentation of Clash](https://github.com/Dreamacro/clash)
 
-Here is a working `.yaml` coniguration file for Clash:
+Here is a working `.yaml` configuration file for Clash:
    ```sh
 port: 7890
 socks-port: 7891
