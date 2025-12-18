@@ -23,7 +23,7 @@ OBFS="http"
 wget --no-check-certificate -O snell.zip https://github.com/icpz/open-snell/releases/download/v3.0.1/snell-server-linux-amd64.zip
 unzip -o snell.zip
 chmod +x snell-server
-mv -f snell-server /usr/local/bin/
+mv -fZ snell-server /usr/local/bin/
 
 mkdir /etc/snell/
 echo "Generating snell-server.conf"
